@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="og:title" content="Le livre">
+	<meta name="og:author" content="Michael Hurtado">
+	<meta name="og:type" content="website">
+	<meta property="og:description"
+	content="A poem by Michael Hurtado for Taper #6" />
+	<meta name="og:image" content="https://taper.badquar.to/6/images/livre.jpg">
+	<meta name="og:url" content="https://taper.badquar.to/6/livre.html">
+	<title>Le livre (Taper #6)</title>
+
+<!-- “Le livre” Copyright (C) 2021 Michael Hurtado
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved. This file is offered as-is,
+without any warranty.
+
+This is from Taper #6: A Throw of the Dice, Spring 2021:
+
+https://taper.badquar.to/6/livre.html
+
+In 1957 "Le livre" was published for the first time, a compilation of
+texts that the French poet Stéphane Mallarmé left as unfinished work.
+Such texts correspond to his total book project, that book that could
+house the universe in its infinite vastness.
+
+################################Poetic Thesis########################
+#                                                                   #
+#  The book as a universe - the universe as a book                  #
+#                                                                   #
+#  A book is not the place where only words are stored.             #
+#  A book is a sequence of spaces, moments and experiences.         #
+#  A book incorporates space, time and sign.                        #
+#  A book is neither created nor destroyed.                         #
+#  A book includes other books.                                     #
+#  A book can take the most unexpected forms.                       #
+#  The set of all books is a book.                                  #
+#  The set of everything that is not a book is a book.              #
+#  The entire universe is a book.                                   #
+#  The book can take the shape of a tweet, a platform, an           #
+#  application, a website or whatever.                              #
+#                                                                   #
+#####################################################################
+
+The texts of the website correspond to the work Un Coup de dés jamais
+n’abolira le hasard. Dedicated to Mallarmé, Pascal, Laplace and many
+others...
+
+Reload to clear the screen
+-->
+
+	<style>
+	body { margin:0 ; overflow:hidden }
+	a { color:#eee ; text-decoration:none }
+	header { margin:0 ; padding:0 ; background-color:#444 ; color:#bbb ;
+		position:relative ; z-index:1000 }
+	header > h1 { margin:0 ; font-size:12px ; font-family:sans-serif ;
+		border-bottom:1px #999 solid ; padding:5px 10px ; line-height:17px }
+</style>
+</head>
+<body>
+<header id="nav">
+	<h1>
+		<a href="index.html">Taper #6 :
+		A Throw of the Dice</a> : Spring 2021 <br>
+		<a href="livre.html">“Le livre”</a> by
+		<a href="about.html#hurtado">Michael Hurtado</a> :
+		<a href="six_small_sketches.html">&lt;&lt;</a> &mdash;
+		<a href="reconstructing_the_die.html">&gt;&gt;</a>
+	</h1>
+</header> <!-- The poem that follows, up to </body>, is at most 2kb -->
+<div style="color:gray;margin:auto;width: 95%; margin-top: 0.5%; background-color: white;">
+	"Click on the screen and draw your own poem"
+</div>
+<script>
+var canvas=document.createElement('canvas');
+document.body.appendChild(canvas);
+
+document.body.style.margin=0;
+canvas.style.position='fixed';
+
+var ctx=canvas.getContext('2d');
+resize();
+
+var pos={x:0,y:0};
+window.addEventListener('resize',resize);
+
+document.addEventListener('mousemove',draw);
+document.addEventListener('mousedown',setPosition);
+document.addEventListener('mouseenter',setPosition);
+
+function setPosition(e){
+	pos.x=e.clientX;
+	pos.y=e.clientY;
+}
+
+function resize(){
+	ctx.canvas.width=window.innerWidth;
+	ctx.canvas.height=window.innerHeight;
+}
+
+function draw(e){
+	if (e.buttons!==1) 
+		return;
+
+	ctx.fillStyle = "rgba(250, 250, 250, 0.02)";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	ctx.beginPath();ctx.moveTo(pos.x,pos.y);
+	setPosition(e);
+	ctx.font=Math.floor(Math.random()*30)+5+'px Futura';
+
+	var texto="C’ÉTAIT_issu stellaire_CE SERAIT_pire_non_davantage ni moins_indifféremment mais autant_LE NOMBRE_EXISTÂT-T’IL_autrement qu’hallucination éparse d'agonie_COMMENCÂT-IL ET CESSÂT-IL_sourdant que nié et clos quand apparu_enfin_par quelque profusion répandue en rareté_SE CHIFFRÂT-IL_évidence de la somme pour peu qu’une_ILLUMINÂT-IL_LE HASARD_Choit_la plume_rythmique suspens du sinistre_s’ensevelir_aux écumes originelles_nagueres d’ou sursauta son délire jusqu’a une cime_flétrie_par la neutralité identique du gouffre_._:_;_ _1_2_3_4_5_6_7_8_9_0".split("_");
+
+	var j=String.fromCodePoint(Math.floor(Math.random()*574)+127744);
+	var m=texto.concat(j,j,j,j,j,j);
+	ctx.fillStyle = "#000000";
+	ctx.fillText(m[Math.floor(Math.random()*m.length)],pos.x,pos.y);
+}
+</script>
+</body>
+</html>
