@@ -66,8 +66,8 @@ Reload to clear the screen
 	<h1>
 		<a href="index.html">Taper #6 :
 		A Throw of the Dice</a> : Spring 2021 <br>
-		<a href="livre.html">“Le livre”</a> by
-		<a href="about.html#hurtado">Michael Hurtado</a> :
+		<a href="livre.html">“Wreckage of the Infinite”</a> by
+		<a href="about.html#hurtado">Harrison</a> :
 		<a href="six_small_sketches.html">&lt;&lt;</a> &mdash;
 		<a href="reconstructing_the_die.html">&gt;&gt;</a>
 	</h1>
@@ -127,8 +127,8 @@ function draw(rand){
 	p.style.left = pos.x + 'px';
 	//p.style.font = '35px Futura';
 	p.style.color = 'black';
-	var val = rand ? (Math.floor(Math.random()*3)+7) : 10;
-	p.style.animation = "colorChange " + val + "s";
+	var val = rand ? (Math.floor(Math.random()*3)+5) : 8;
+	p.style.animation = "colorChange " + val + "s linear";
 	Math.Random
 
 	document.body.appendChild(p);
@@ -144,14 +144,16 @@ function draw(rand){
   		0% {
   			color: white;
   		}
-  		/*80% {
-  			top:  80vh;
-  			left: 80vw;
+  		50%{
+  			color:  white;
+  		}
+  		/*90% {
+  			color:  black;
   		}*/
   		100% {
   			color: black;
-  			top:  92vh;
-  			left:  92vw;
+  			top:  90vh;
+  			left:  90vw;
   		}
 	}
 </style>
