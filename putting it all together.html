@@ -78,6 +78,7 @@ Reload to clear the screen
 <script>
 document.body.style.margin=0;
 document.body.style.background = 'black';
+document.body.style.scroll = "none";
 
 // Format static text
 const u = document.getElementById('u');
@@ -112,8 +113,14 @@ function setPosition(e){
 	pos.y = e.clientY;
 }
 
+function setPosition2(e){
+	pos.x = e.touches[0].clientX;
+	pos.y = e.touches[0].clientY;
+}
+
 function drawPosition(e) {
 	setPosition(e);
+	setPosition2(e);
 	draw(true);
 }
 
