@@ -103,6 +103,7 @@ setInterval(draw, 500, false);
 setTimeout(function () { 
 						document.getElementById('m').textContent += "Drag your mouse or finger to create your own wreckage.";
 						document.addEventListener('mousemove',drawPosition); 
+						document.addEventListener('touchmove', drawPosition);
 						}, 
 			6000);
 
