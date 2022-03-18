@@ -72,9 +72,13 @@ Reload to clear the screen
 		<a href="reconstructing_the_die.html">&gt;&gt;</a>
 	</h1>
 </header> <!-- The poem that follows, up to </body>, is at most 2kb -->
-<div id="m" style="color:gray;margin:auto;width: 95%;"></div>
-<p id="u">This universe is the</p>
-<p id="s">on the shores of the finite.</p>
+<div id="m" style="color:gray;margin:auto;top: 50vh;position: fixed;text-align: center;width: 100%;"></div>
+<div class="holder" id="u">
+	<p>This universe is the</p>
+</div>
+<div class="holder" id="s">
+	<p>on the shores of the finite.</p>
+</div>
 <script>
 document.body.style.background = 'black';
 document.body.style.scroll = "none";
@@ -83,21 +87,48 @@ document.body.style.scroll = "none";
 const u = document.getElementById('u');
 u.style.color = 'white';
 u.style.position = 'absolute';
-u.style.top = 'calc(1vh + 44px)';
-u.style.left = '2vw';
+u.style.top = '44px';
+u.style.left = 'max(4vh, 4vw)';
 u.style.zIndex = '999';
 
 const s = document.getElementById('s');
 s.style.color = 'white';
 s.style.position = 'fixed';
-s.style.bottom = '0';
-s.style.right = '2vw';
+s.style.bottom = 'max(4vh, 4vw)';
+s.style.right = 'max(4vh, 4vw)';
 s.style.zIndex = '999';
+s.style.textAlign = 'right';
+
+const m = document.getElementById('m');
+s.style.position = 'fixed';
+m.style.zIndex = '999';
+// I think this is redeundant ^^
 
 pos = {
-	x: 225,
-	y: 60,
+	x: -1,
+	y: -1,
 };
+
+var sty = document.createElement('style');
+sty.type = 'text/css';
+var kf = '\
+@keyframes ani {\
+  		0% {\
+  			color: white;\
+  		}\
+  		50% {\
+  			color:  white;\
+  		}\
+  		100% {\
+  			color: black;\
+  			top:  ' + s.offsetTop + 'px;\
+  			left: ' + s.offsetLeft + 'px;\
+  		}\
+	}';
+sty.innerHTML = kf;
+document.getElementsByTagName('head')[0].appendChild(sty);
+
+
 
 height = document.documentElement.clientHeight;
 width = document.documentElement.clientWidth;
@@ -105,13 +136,13 @@ diag = Math.sqrt((pos.x-width)**2 + (pos.y-height)**2);
 multiplier = 12 / diag;
 
 
-// setInterval(draw, 500, false);
-// setTimeout(function () { 
-// 						document.getElementById('m').textContent += "Drag your mouse or finger to create your own wreckage.";
-// 						document.addEventListener('mousemove', drawPosition); 
-// 						document.addEventListener('touchmove', drawPositionT);
-// 						}, 
-// 			10000);
+setInterval(draw, 500, false);
+setTimeout(function () { 
+						document.getElementById('m').textContent += "Drag your mouse or finger to create your own wreckage.";
+						document.addEventListener('mousemove', drawPosition); 
+						document.addEventListener('touchmove', drawPositionT);
+						}, 
+			10000);
 
 function setPosition(e){
 	pos.x = e.clientX;
@@ -140,37 +171,45 @@ function draw(rand){
 	p.textContent += "wreckage of the infinite";
 
 	p.style.position = 'absolute';
-	p.style.top = pos.y + 'px';
-	p.style.left = pos.x + 'px';
+
+	// Starting position
+	if (pos.x == -1) {
+		if (window.screen.availHeight < window.screen.availWidth) {
+			p.style.top = u.offsetTop + 'px';
+			var sum = u.offsetLeft + u.offsetWidth;
+			p.style.left = sum + 'px';
+		} else { //verticle screen
+			var sum = u.offsetTop + u.offsetHeight + 'px';
+			p.style.top = sum;
+			p.style.left = u.offsetLeft + 'px';
+		}
+	} else {
+		p.style.top = pos.y + 'px';
+		p.style.left = pos.x + 'px';
+	}
+	
 	//p.style.font = '35px Futura';
 	p.style.color = 'black';
 	// var val = rand ? (Math.floor(Math.random()*3)+5) : 12;
 	curr_diag = Math.sqrt((pos.x-width)**2 + (pos.y-height)**2);
 	var val = multiplier * curr_diag;
-	p.style.animation = "colorChange " + val + "s linear";
-	Math.Random
+	
+	p.style.animation = "ani " + val + "s linear";
 
 	document.body.appendChild(p);
 
 }
 </script>
-<style>
+<style>	
 	p {
 		color: white;
-		font-size: 18pt;
+		font-size: max(2vh, 2vw);
+		line-height: 1.4;
+		margin-bottom:  0;
 	}
-	@keyframes colorChange {
-  		0% {
-  			color: white;
-  		}
-  		50% {
-  			color:  white;
-  		}
-  		100% {
-  			color: black;
-  			top:  95vh;
-  			left: 90vw;
-  		}
+	.holder {
+		max-width: 20%;
+	}
 	}
 </style>
 </body>

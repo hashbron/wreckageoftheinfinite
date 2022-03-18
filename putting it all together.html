@@ -72,7 +72,7 @@ Reload to clear the screen
 		<a href="reconstructing_the_die.html">&gt;&gt;</a>
 	</h1>
 </header> <!-- The poem that follows, up to </body>, is at most 2kb -->
-<div id="m" style="color:gray;margin:auto;width: 95%;"></div>
+<div id="m" style="color:gray;margin:auto;top: 50vh;position: fixed;text-align: center;width: 100%;"></div>
 <div class="holder" id="u">
 	<p>This universe is the</p>
 </div>
@@ -86,7 +86,6 @@ document.body.style.scroll = "none";
 // Format static text
 const u = document.getElementById('u');
 u.style.color = 'white';
-//u.style.line-height = '1.6';
 u.style.position = 'absolute';
 u.style.top = '44px';
 u.style.left = 'max(4vh, 4vw)';
@@ -95,10 +94,15 @@ u.style.zIndex = '999';
 const s = document.getElementById('s');
 s.style.color = 'white';
 s.style.position = 'fixed';
-s.style.bottom = '0';
+s.style.bottom = 'max(4vh, 4vw)';
 s.style.right = 'max(4vh, 4vw)';
 s.style.zIndex = '999';
 s.style.textAlign = 'right';
+
+const m = document.getElementById('m');
+s.style.position = 'fixed';
+m.style.zIndex = '999';
+// I think this is redeundant ^^
 
 pos = {
 	x: -1,
