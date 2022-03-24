@@ -142,13 +142,17 @@ multiplier = 12 / diag;
 setInterval(draw, 500, false);
 setTimeout(function () { 
 						document.getElementById('m').textContent += "[Drag your mouse or finger to create your own wreckage]";
-						document.addEventListener('mousemove', function () {document.getElementById('m').textContent = "";}); 
-
+						document.addEventListener('mousemove', rm); 
+						document.addEventListener('touchmove', rm);
 						
 						document.addEventListener('mousemove', drawPosition); 
 						document.addEventListener('touchmove', drawPositionT);
 						}, 
 			12000);
+
+function rm() {
+	document.getElementById('m').textContent = "";
+}
 
 function setPosition(e){
 	pos.x = e.clientX;

@@ -72,14 +72,11 @@ Reload to clear the screen
 		<a href="reconstructing_the_die.html">&gt;&gt;</a>
 	</h1>
 </header> <!-- The poem that follows, up to </body>, is at most 2kb -->
-<p id="m" style="color:gray;margin:auto;top: 50vh;position: fixed;text-align: center;width: 100%;"></p>
-<div class="holder" id="u">
-	<p>This universe is the</p>
-</div>
-<div class="holder" id="s">
-	<p>on the shores of the finite.</p>
-</div>
+<div id="m" style="color:gray;margin:auto;width: 95%; margin-top: 0.5%"></div>
+<p id="u">This universe is the</p>
+<p id="s">on the shores of the finite.</p>
 <script>
+document.body.style.margin=0;
 document.body.style.background = 'black';
 document.body.style.scroll = "none";
 
@@ -87,72 +84,29 @@ document.body.style.scroll = "none";
 const u = document.getElementById('u');
 u.style.color = 'white';
 u.style.position = 'absolute';
-u.style.top = '44px';
-u.style.left = 'max(4vh, 4vw)';
+u.style.top = 'calc(5vh + 20px)';
+u.style.left = 'calc(1vw + 20px)';
 u.style.zIndex = '999';
 
 const s = document.getElementById('s');
 s.style.color = 'white';
-s.style.position = 'fixed';
-s.style.bottom = 'max(4vh, 4vw)';
-s.style.right = 'max(4vh, 4vw)';
+s.style.position = 'absolute';
+s.style.top = '85vh';
+s.style.left = '85vw';
 s.style.zIndex = '999';
-s.style.textAlign = 'right';
-
-const m = document.getElementById('m');
-m.style.zIndex = '999';
-m.style.background = 'black';
-
-// I think this is redeundant ^^
 
 pos = {
-	x: -1,
-	y: -1,
+	x: 225,
+	y: 60,
 };
-
-var sty = document.createElement('style');
-sty.type = 'text/css';
-var kf = '\
-@keyframes ani {\
-  		0% {\
-  			color: white;\
-  			zIndex: 100;\
-  		}\
-  		50% {\
-  			color:  white;\
-  		}\
-  		100% {\
-  			color: black;\
-  			top:  ' + s.offsetTop + 'px;\
-  			left: ' + s.offsetLeft + 'px;\
-  			zIndex: 0;\
-  		}\
-	}';
-sty.innerHTML = kf;
-document.getElementsByTagName('head')[0].appendChild(sty);
-
-
-
-height = document.documentElement.clientHeight;
-width = document.documentElement.clientWidth;
-diag = Math.sqrt((pos.x-width)**2 + (pos.y-height)**2);
-multiplier = 12 / diag;
-
 
 setInterval(draw, 500, false);
 setTimeout(function () { 
-						document.getElementById('m').textContent += "[Drag your mouse or finger to create your own wreckage]";
-						document.addEventListener('mousemove', rm); 
-						document.addEventListener('touchmove', rm);
-						
+						document.getElementById('m').textContent += "Drag your mouse or finger to create your own wreckage.";
 						document.addEventListener('mousemove', drawPosition); 
 						document.addEventListener('touchmove', drawPositionT);
 						}, 
-			12000);
-
-function rm() {
-	document.getElementById('m').textContent = "";
-}
+			6000);
 
 function setPosition(e){
 	pos.x = e.clientX;
@@ -181,46 +135,38 @@ function draw(rand){
 	p.textContent += "wreckage of the infinite";
 
 	p.style.position = 'absolute';
-
-	// Starting position
-	if (pos.x == -1) {
-		if (window.screen.availHeight < window.screen.availWidth) {
-			p.style.top = u.offsetTop + 'px';
-			var sum = u.offsetLeft + u.offsetWidth;
-			p.style.left = sum + 'px';
-		} else { //verticle screen
-			var sum = u.offsetTop + u.offsetHeight + 'px';
-			p.style.top = sum;
-			p.style.left = u.offsetLeft + 'px';
-		}
-	} else {
-		p.style.top = pos.y + 'px';
-		p.style.left = pos.x + 'px';
-	}
-	
+	p.style.top = pos.y + 'px';
+	p.style.left = pos.x + 'px';
 	//p.style.font = '35px Futura';
 	p.style.color = 'black';
-	p.style.zIndex = '0';
-	//var val = rand ? (Math.floor(Math.random()*3)+5) : 12;
-	curr_diag = Math.sqrt((pos.x-width)**2 + (pos.y-height)**2);
-	var val = multiplier * curr_diag;
-	
-	p.style.animation = "ani " + val + "s linear";
+	var val = rand ? (Math.floor(Math.random()*3)+5) : 8;
+	p.style.animation = "colorChange " + val + "s linear";
+	Math.Random
 
 	document.body.appendChild(p);
 
 }
 </script>
-<style>	
+<style>
 	p {
 		color: white;
-		font-size: max(2vh, 2vw);
-		line-height: 1.4;
-		margin-bottom:  0;
+		font-size: 18pt;
 	}
-	.holder {
-		max-width: 20%;
-	}
+	@keyframes colorChange {
+  		0% {
+  			color: white;
+  		}
+  		50%{
+  			color:  white;
+  		}
+  		/*90% {
+  			color:  black;
+  		}*/
+  		100% {
+  			color: black;
+  			top:  90vh;
+  			left:  90vw;
+  		}
 	}
 </style>
 </body>
