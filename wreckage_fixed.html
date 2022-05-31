@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Wreckage of the Infinite (Taper #8)</title>
+
+<!-- Wreckage of the Infinite,” Copyright (C) 2022 Harrison Bronfeld
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright 
+notice and this notice are preserved. This file is offered as-is,
+without any warranty.
+
+This is from Taper #8: 8-Bit Nostalgia, Spring 2022:
+
+https://taper.badquar.to/8/wreckage_of_the_infinite.html
+
+“This universe is the wreckage of the infinite on the shores of the
+finite.”
+
+- Swami Vivekananda
+
+This quote came to me by way of the death contemplation app WeCroak,
+which is inspired by a Bhutanese notion that contemplating death five
+times a day leads to a happier life.
+
+This daily ritual, a routine reminder of one’s own mortality, is
+presented as a salve for the most potent and painful human emotions —
+among them nostalgia, derived from the Greek “nostos” (homecoming)
+and “algos” (pain), itself a conflict between the emphermality of the
+present and the finality of the past.
+
+Playing on the idea that the numeral 8 becomes the symbol for
+infinity when turned sideways, I want to explore interactions between
+the finite and the infinite. Though this poem’s code is a finite 
+collection of bytes (each itself 8 bits), when run, it can generate
+infinite copies of the text “wreckage of the infinite”. Readers can 
+contribute to this wreckage as well, spawning more of it and moving it
+around. However, as the human experience inevitably concludes, so too
+does the wreckage created digitally: crashing into the edge of the
+screen before disappearing forever.
+
+-->
+
+	<style>
+	body { margin:0 ; overflow:visible; }
+	a { color:#eee ; text-decoration:none }
+	header { margin:0 ; padding:0 ; background-color:#444 ; color:#bbb ;
+		position:relative ; z-index:1000 }
+	header > h1 { margin:0 ; font-size:12px ; font-family:sans-serif ;
+		border-bottom:1px #999 solid ; padding:5px 10px ; line-height:17px }
+</style>
+</head>
+<body>
+<header id=nav>
+	<h1>
+		<a href="index.html">Taper #8 :
+		8-Bit Nostalgia</a> : Spring 2022 <br>
+		<a href="wreckage_of_the_infinite.html">"Wreckage of the Infinite"</a> by
+		<a href="about.html#bronfeld">Harrison Bronfeld</a> :
+		<a href="prev.html">&lt;&lt;</a> &mdash;
+		<a href="next.html">&gt;&gt;</a>
+	</h1>
+</header> <!-- All poem code goes here, and must be less than or equal to 2048 bytes (not including closing </body> and </html> tags below)-->
+<p id="a" style="color:gray;top:50vh;position:fixed;text-align:center;width:100%;z-index:999;background:black;"></p><div class="c" id="u" style="position:absolute;"><p>This universe is the</p></div><div class="c" id="s" style="position:fixed;text-align:right;"><p>on the shores of the finite.</p></div>
+<script>
+d=document;b=d.body;b.style.background='black';b.style.overflow='hidden';q='max(4vh,4vw)';
+u=d.getElementById('u');us=u.style;us.top='40px+'+q;us.left=q;
+s=d.getElementById('s');ss=s.style;ss.bottom=q;ss.right=q;
+z={x:-1,y:-1};
+var y=d.createElement('style');y.type='text/css';var k='\ @keyframes n {\ 0%{\ color:white;\ zIndex:100;\ }\ 50%{\ color:white;\ }\ 100%{\ color:black;\ top:'+s.offsetTop+'px;\ left:'+s.offsetLeft+'px;\ zIndex:0;\ }\ }';y.innerHTML=k;d.getElementsByTagName('head')[0].appendChild(y);
+de=d.documentElement;h=de.clientHeight;w=de.clientWidth;g=Math.sqrt((z.x-w)**2+(z.y-h)**2);m=12/g;
+setInterval(D,500,0);
+setTimeout(function(){d.getElementById('a').textContent+="[Drag your mouse or finger to create your own wreckage]";d.addEventListener('mousemove',P);d.addEventListener('touchmove',T);},14000);
+function R(){d.getElementById('a').textContent="";}
+function T(e){R();z.x=e.touches[0].clientX;z.y=e.touches[0].clientY;D();}
+function P(e){R();z.x=e.clientX;z.y=e.clientY;D();}
+function D(){var p=d.createElement("p");p.textContent+="wreckage of the infinite";ps=p.style;ps.position='absolute';ps.whiteSpace='nowrap';ws=window.screen;
+if(z.x==-1){
+	if(ws.availHeight<ws.availWidth){
+		ps.top=u.offsetTop+'px';var v=u.offsetLeft+u.offsetWidth;ps.left=v+'px';}
+	else{var v=u.offsetTop+u.offsetHeight+'px';ps.top=v;ps.left=u.offsetLeft+'px';}}
+else{ps.top=z.y+'px';ps.left=z.x+'px';}ps.color='black';ps.zIndex='0';c=Math.sqrt((z.x-w)**2+(z.y-h)**2);var v=m*c;ps.animation="n "+v+"s linear forwards";b.appendChild(p);}
+</script>
+<style>
+p {color:white;font-size:max(2vh,2vw);line-height:1.4;margin-bottom:0;}
+.c {max-width:20%;z-index:999;}
+</style>
+</body>
+</html>
