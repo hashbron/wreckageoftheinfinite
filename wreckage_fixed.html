@@ -43,7 +43,7 @@ screen before disappearing forever.
 -->
 
 	<style>
-	body { margin:0 ; overflow:visible; }
+	body { margin:0 ; overflow:hidden; }
 	a { color:#eee ; text-decoration:none }
 	header { margin:0 ; padding:0 ; background-color:#444 ; color:#bbb ;
 		position:relative ; z-index:1000 }
@@ -64,7 +64,7 @@ screen before disappearing forever.
 </header> <!-- All poem code goes here, and must be less than or equal to 2048 bytes (not including closing </body> and </html> tags below)-->
 <p id="a" style="color:gray;top:50vh;position:fixed;text-align:center;width:100%;z-index:999;background:black;"></p><div class="c" id="u" style="position:absolute;"><p>This universe is the</p></div><div class="c" id="s" style="position:fixed;text-align:right;"><p>on the shores of the finite.</p></div>
 <script>
-d=document;b=d.body;b.style.background='black';b.style.overflow='hidden';q='max(4vh,4vw)';
+d=document;b=d.body;b.style.background='black';q='max(4vh,4vw)';
 u=d.getElementById('u');us=u.style;us.top='40px+'+q;us.left=q;
 s=d.getElementById('s');ss=s.style;ss.bottom=q;ss.right=q;
 z={x:-1,y:-1};
