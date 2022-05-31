@@ -75,12 +75,12 @@ setTimeout(function(){d.getElementById('a').textContent+="[Drag your mouse or fi
 function R(){d.getElementById('a').textContent="";}
 function T(e){R();z.x=e.touches[0].clientX;z.y=e.touches[0].clientY;D();}
 function P(e){R();z.x=e.clientX;z.y=e.clientY;D();}
-function D(){var p=d.createElement("p");p.textContent+="wreckage of the infinite";ps=p.style;ps.position='absolute';ps.whiteSpace='nowrap';ws=window.screen;
+function D(){var p=d.createElement("p");p.textContent+="wreckage of the infinite";ps=p.style;ps.position='absolute';ws=window.screen; //ps.whiteSpace='nowrap';
 if(z.x==-1){
 	if(ws.availHeight<ws.availWidth){
 		ps.top=u.offsetTop+'px';var v=u.offsetLeft+u.offsetWidth;ps.left=v+'px';}
 	else{var v=u.offsetTop+u.offsetHeight+'px';ps.top=v;ps.left=u.offsetLeft+'px';}}
-else{ps.top=z.y+'px';ps.left=z.x+'px';}ps.color='black';ps.zIndex='0';c=Math.sqrt((z.x-w)**2+(z.y-h)**2);var v=m*c;ps.animation="n "+v+"s linear";b.appendChild(p);}
+else{ps.top=z.y+'px';ps.left=z.x+'px';}ps.color='black';ps.zIndex='0';c=Math.sqrt((z.x-w)**2+(z.y-h)**2);var v=m*c;ps.animation="n "+v+"s linear forwards";b.appendChild(p);}
 </script>
 <style>
 p {color:white;font-size:max(2vh,2vw);line-height:1.4;margin-bottom:0;}
